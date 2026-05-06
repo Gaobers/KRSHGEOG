@@ -19,9 +19,4 @@
     <ProjectReference Include="..\KRSHGEOG.Entities\KRSHGEOG.Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

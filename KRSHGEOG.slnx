@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="KRSHGEOG.BusinessLogic/KRSHGEOG.BusinessLogic.csproj" Id="71460604-ae28-4b3f-9700-e0855b67c9da" />
+  <Project Path="KRSHGEOG.DataAccess/KRSHGEOG.DataAccess.csproj" Id="043e15a1-55bf-4341-beb3-98930c1858fb" />
+  <Project Path="KRSHGEOG.Entities/KRSHGEOG.Entities.csproj" Id="f5248093-0c1c-40b7-8fb7-e83fe84a26b9" />
+  <Project Path="KRSHGEOG.WebApplication/KRSHGEOG.WebApplication.csproj" Id="7b54bf3f-6898-48e4-aee3-138c7f34345a" />
+</Solution>

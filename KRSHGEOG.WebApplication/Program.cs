@@ -1,7 +1,12 @@
+using KRSHGEOG.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Registrar DataAccess
+builder.Services.AddDataAccessServices(builder.Configuration);
 
 var app = builder.Build();
 

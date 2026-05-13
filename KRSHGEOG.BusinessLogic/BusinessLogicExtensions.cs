@@ -1,4 +1,5 @@
 ﻿using KRSHGEOG.DataAccess;
+using Mapster;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -16,6 +17,9 @@ namespace KRSHGEOG.BusinessLogic
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
             );
             services.AddDataAccessServices(configuration);
+
+            TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
+
             return services;
         }
     }

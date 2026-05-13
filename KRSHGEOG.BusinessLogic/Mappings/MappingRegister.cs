@@ -9,6 +9,9 @@ namespace KRSHGEOG.BusinessLogic.Mappings
         public void Register(TypeAdapterConfig config)
         {
             config.NewConfig<HardwareProduct, ProductoResponse>();
+
+            config.NewConfig<User, UserResponse>()
+                .Map(ud => ud.RoleId, u => u.Role.Name);
         }
     }
 }

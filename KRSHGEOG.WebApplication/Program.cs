@@ -1,7 +1,22 @@
+using KRSHGEOG.DataAccess;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Registrar DataAccess
+builder.Services.AddDataAccessServices(builder.Configuration);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie((o) =>
+{
+    o.LoginPath = new PathString("/User/login");
+    o.AccessDeniedPath = new PathString("/User/login");
+    o.ExpireTimeSpan = TimeSpan.FromHours(8);
+    o.SlidingExpiration = true;
+    o.Cookie.HttpOnly = true;
+});
 
 var app = builder.Build();
 
@@ -16,6 +31,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();

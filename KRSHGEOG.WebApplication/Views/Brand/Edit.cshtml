@@ -1,0 +1,43 @@
+﻿@model KRSHGEOG.BusinessLogic.DTOs.UpdateBrandRequest
+
+@{
+    ViewData["Title"] = "Editar Marca";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Editar Marca</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="BrandName" class="form-label fw-semibold">Nombre de la marca</label>
+                    <input asp-for="BrandName" class="form-control form-control-lg" />
+                    <span asp-validation-for="BrandName" class="text-danger"></span>
+                </div>
+
+                <hr />
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        Cancelar
+                    </a>
+
+                    <input type="submit" value="Guardar" class="btn btn-primary px-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

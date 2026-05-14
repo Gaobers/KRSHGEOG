@@ -1,8 +1,29 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center p-5 rounded shadow-sm bg-light">
+        <h1 class="display-4 fw-bold text-primary">Ferretería Industrial</h1>
+
+        <p class="lead mt-3">
+            Sistema de gestión para productos, marcas y usuarios.
+        </p>
+
+        <hr class="my-4" />
+
+        <p class="text-muted">
+            Administra la información principal de tu ferretería de forma rápida y sencilla.
+        </p>
+
+        <div class="mt-4">
+            <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg me-2">
+                Ver Productos
+            </a>
+
+            <a asp-controller="Brand" asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                Ver Marcas
+            </a>
+        </div>
+    </div>
 </div>

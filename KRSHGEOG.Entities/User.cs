@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace KRSHGEOG.Entities;
+﻿namespace KRSHGEOG.Entities;
 
 public partial class User
 {

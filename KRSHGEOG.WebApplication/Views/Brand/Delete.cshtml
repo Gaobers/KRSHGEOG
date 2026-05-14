@@ -1,0 +1,39 @@
+﻿@model KRSHGEOG.BusinessLogic.DTOs.BrandResponse
+
+@{
+    ViewData["Title"] = "Eliminar Marca";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 mx-auto" style="max-width: 650px;">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Eliminar Marca</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="alert alert-warning mb-4">
+                ¿Está seguro de que desea eliminar este registro?
+            </div>
+
+            <dl class="row mb-4">
+                <dt class="col-sm-4 text-muted">Nombre</dt>
+                <dd class="col-sm-8 fw-semibold">
+                    @Html.DisplayFor(model => model.BrandName)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        Cancelar
+                    </a>
+
+                    <input type="submit" value="Eliminar" class="btn btn-danger px-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

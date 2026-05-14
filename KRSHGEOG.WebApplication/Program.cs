@@ -1,5 +1,7 @@
 using KRSHGEOG.DataAccess;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     o.ExpireTimeSpan = TimeSpan.FromHours(8);
     o.SlidingExpiration = true;
     o.Cookie.HttpOnly = true;
+});
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(Assembly.Load("KRSHGEOG.BusinessLogic"));
 });
 
 var app = builder.Build();

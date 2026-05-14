@@ -1,0 +1,65 @@
+﻿@model KRSHGEOG.BusinessLogic.DTOs.SolicitudActualizarProducto
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Editar Producto</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <input asp-for="Id" type="hidden" />
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label asp-for="ToolBrandId" class="form-label fw-semibold">Marca</label>
+                        <select asp-for="ToolBrandId" class="form-select" asp-items="ViewBag.ToolBrandId">
+                            <option value="">Seleccione una marca</option>
+                        </select>
+                        <span asp-validation-for="ToolBrandId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="ProductName" class="form-label fw-semibold">Nombre del producto</label>
+                        <input asp-for="ProductName" class="form-control" placeholder="Ejemplo: Taladro Industrial" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="SalePrice" class="form-label fw-semibold">Precio de venta</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input asp-for="SalePrice" class="form-control" placeholder="0.00" />
+                        </div>
+                        <span asp-validation-for="SalePrice" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="StockUnits" class="form-label fw-semibold">Existencias</label>
+                        <input asp-for="StockUnits" class="form-control" placeholder="Cantidad disponible" />
+                        <span asp-validation-for="StockUnits" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <input type="submit" value="Guardar Cambios" class="btn btn-primary px-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

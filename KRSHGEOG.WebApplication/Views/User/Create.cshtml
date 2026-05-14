@@ -1,0 +1,54 @@
+﻿@model KRSHGEOG.BusinessLogic.DTOs.CreateUserRequest
+
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Crear Usuario</h4>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label asp-for="Username" class="form-label fw-semibold">Nombre de usuario</label>
+                        <input asp-for="Username" class="form-control" placeholder="Ejemplo: admin" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="RoleId" class="form-label fw-semibold">Rol</label>
+                        <select asp-for="RoleId" class="form-select" asp-items="ViewBag.RoleId">
+                            <option value="">Seleccione un rol</option>
+                        </select>
+                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="PasswordHash" class="form-label fw-semibold">Contraseña</label>
+                        <input asp-for="PasswordHash" type="password" class="form-control" placeholder="Ingrese la contraseña" />
+                        <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <input type="submit" value="Crear Usuario" class="btn btn-primary px-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

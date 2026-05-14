@@ -46,11 +46,11 @@ namespace KRSHGEOG.WebApplication.Controllers
             try
             {
                 var userResponse = await _mediator.Send(getUserAuthenticatedQuery);
-                if (userResponse != null && userResponse.UserNickname == getUserAuthenticatedQuery.userName)
+                if (userResponse != null && userResponse.Username == getUserAuthenticatedQuery.Username)
                 {
-                    var claims = new[] {
-                   new Claim(ClaimTypes.Name, userResponse.UserName),
-                   new Claim("Id", userResponse.UserId.ToString())
+                   var claims = new[] {
+                   new Claim(ClaimTypes.Name, userResponse.Username),
+                   new Claim("Id", userResponse.Id.ToString())
                    };
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -77,8 +77,7 @@ namespace KRSHGEOG.WebApplication.Controllers
         public async Task<IActionResult> Create()
         {
             var rols = await _mediator.Send(new GetRolesQuery());
-            ViewData["RolId"] = new SelectList(rols, "RolId", "RolName");
-            return View();
+            ViewBag.RoleId = new SelectList(rols, "Id", "Name"); return View();
         }
 
         // POST: BrandController/Create
@@ -106,8 +105,7 @@ namespace KRSHGEOG.WebApplication.Controllers
         {
             var user = await _mediator.Send(new GetUserQuery(id));
             var rols = await _mediator.Send(new GetRolesQuery());
-            ViewData["RolId"] = new SelectList(rols, "RolId", "RolName", user.RolId);
-            return View(user.Adapt(new UpdateUserRequest()));
+            ViewBag.RoleId = new SelectList(rols, "Id", "Name", user.RoleId); return View(user.Adapt(new UpdateUserRequest()));
         }
 
         // POST: BrandController/Edit/5
@@ -127,7 +125,7 @@ namespace KRSHGEOG.WebApplication.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
                 var rols = await _mediator.Send(new GetRolesQuery());
-                ViewData["RolId"] = new SelectList(rols, "RolId", "RolName", updateUserRequest.RolId);
+                ViewData["RolId"] = new SelectList(rols, "RolId", "RolName", updateUserRequest.Id);
                 return View(updateUserRequest);
             }
         }
